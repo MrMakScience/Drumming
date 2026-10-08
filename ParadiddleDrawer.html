@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset="utf8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script type='text/javascript' nonce='uS8KQQ7U091Vpm2G4B/v+g==' src='https://a84cf747-9ed7-471b-b5b6-590d5d7c3014.frame.claudeusercontent.com/npExNRsNp__h-xCy7NZriFlPYW9_sH6PDArWE3-vl9_FkmTwPFKKF0Vdo_SH7zOOa4X2TIDfbfcMbWmU8hFQ2C0qfFn0ZKaFhrlG9OpYaWp68ycWlTkgtiMG9WYzlzIB4yL07IyWOSmRiCTV5AFrtxRl-QlDJNoIXm0ju_Z5Xx5746pC1NwBle_xthgi8uFWLe80eR8n2q-vws4UKPNGFiPS8vhY4HDQZ3N8_gLKzZ8tbFzLD8qAnd0zWb4N8rISHU_mwm4vdX005Z0bxFyiu_XTBAoMjnU9UymIw6O7ESqz0pFmfZ2s83WhXY7STh0Q8iuFgWaVcFyIqOSTcsaKof41nyePvJCyXweeWL-K-SSAckAcUmNdp8fDtGyPM-SM8fi3yAUizO7BXMl44zsb3-EGXXNSq9hFSiAEP5OhBVslKn4aDEehGxGUPUi54EvWuK3ruP5kcSfuOIW38HJlM9Onz82YxGE-1I7h9FWP1a3V3D20SfzT9RSnQ7Lm9cPjIO9KApZ55njogmm15p-GAfIRMc5arLsnowpkDr1FbHYLJIue6zRL8tl1x6Ys-2dajQR3Z0K1NdHfDXpU--4EUz4o5htbv-jmndUZ9FKu94OuX6DeXTRWfenoW8wd5BIyPOwMkJMgrmzCb0ph_JvEXpM5J-BrGsAcCSzpVl4DgVg-21iC4hO40RTiJCUs7Xi-T4gd3f8AMT9yDjAcL1EI7Q'></script></head><body>
+<!doctype html><html><head><meta charset="utf8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script type='text/javascript' nonce='6mi8FdVqc26mew9bEB2jUQ==' src='https://a84cf747-9ed7-471b-b5b6-590d5d7c3014.frame.claudeusercontent.com/GwEigg3kZQV7jfOtrCXlEfTrFDi7jiT0Pvf6d6_j3YDXolrtYB1g-ACQs4sRXZBUS3LTl76vBDJhbDj2wjebgN75HvJvFD3r-nj_GPUyuI_Db0qGo7MwjGmFgBgcs_7_Sdf4bZP_UjqRlawVeX4z1R178SuG_TDR9YuPo7g0q0JL07skTl0sTipnCDyiYPUPm25rPEm5tLa_SDXuu6ZPcoQkH1ntYyhLaM4yHsZFg-zUjQxvDXJomtHG8X-OgXpj0bNEcHMPwZLucqMPJo7DGuW-Cln0B0hIktB7Qx-l07WXwwWO1Adg6grvo5JwGk4eKzwYCIdmquL-4W3Oo01IxhGQpBBcH99eyn8jVtpjhX8CsjW_VzJQgiimNQRC7NQzEYUO_ZFaOdrGKMHilUUkATojP1LVw-SI440bBczZXL-veJaPueFUxf_KDXZgdIkxpQf33z5vwmvMcZNrKKe94HtT62ud28CJ2_iYVs0ng6ehFxPQGtboyM2KbxpyOjS5lzC5eFVcGNu81j0w6G_xGB4oTsmDo-y14rGwOGJlMEy8evIhaA5rwuqAS6FMOs38d7vgfbAvJfCr-GXNy9sTJ_PY4CHnFHYulME-kIxzUk0Tv3kHUOSeXZ_Y96EOluk3Gj9lhbuBrk-sb4aQoSWKzA06wr66g1LwEkpaIpv64P5hP5VZQtqzt2KUqN6k0JyERUVV7eVGzLaRZI71SwgwcA'></script></head><body>
 <title>Paradiddle Drawer</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&amp;family=IBM+Plex+Sans:wght@400;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
 <style>
@@ -303,6 +303,9 @@
   /* ---------- Audio ---------- */
   var ctx = null, master = null, noiseBuf = null, bus = null, keepAlive = null;
   var reverbIn = null, satCurve = null;
+  /* After this much idle time the phone may have released the audio hardware even if the engine
+     still reports "running", so Play builds a fresh engine instead of reusing the old one. */
+  var IDLE_REBUILD_MS = 30000, lastStopAt = Date.now();
   var timers = [], playing = false;
 
   function silentWavURI() {
@@ -462,7 +465,8 @@
 
   function start() {
     /* Phones can suspend or close the audio engine after a call, a lock screen or a long pause. Build a fresh one. */
-    if (ctx && ctx.state !== "running") {
+    var idleMs = Date.now() - lastStopAt;
+    if (ctx && (ctx.state !== "running" || idleMs > IDLE_REBUILD_MS)) {
       try { ctx.close(); } catch (err) {}
       ctx = null;
     }
@@ -492,6 +496,7 @@
       setTimeout(function () { try { b.disconnect(); } catch (err) {} }, 120);
     }
     bus = null;
+    if (playing) { lastStopAt = Date.now(); }
     playing = false;
     if (keepAlive) { keepAlive.pause(); }
     clearDots();
